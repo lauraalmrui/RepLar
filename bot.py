@@ -28,5 +28,6 @@ def run():
             message='Subir hola.txt',
             content=file_content
         )
-        if __name__ == "__main__":
+
+    if __name__ == "__main__":
         upload_to_github()
