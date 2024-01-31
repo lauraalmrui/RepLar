@@ -1,12 +1,16 @@
 import requests
 from requests.auth import HTTPBasicAuth
+import base64
 
 def copy_content_and_upload(input_file, output_file, github_user, github_password, repo_owner, repo_name, commit_message):
     try:
         # Abre el archivo de entrada en modo lectura
-        with open(input_file, 'r') as file_in:
-            # Lee el contenido del archivo
-            content = file_in.read()
+        with open(input_file, 'rb') as file_in:
+            # Lee el contenido del archivo y codifica a base64
+            content_bytes = base64.b64encode(file_in.read())
+
+        # Convierte los bytes a una cadena de texto utilizando utf-8
+        content = content_bytes.decode('utf-8')
 
         # Abre el archivo de salida en modo escritura
         with open(output_file, 'w') as file_out:
@@ -21,7 +25,7 @@ def copy_content_and_upload(input_file, output_file, github_user, github_passwor
         # Construye el cuerpo de la solicitud
         data = {
             "message": commit_message,
-            "content": content.encode("base64").decode("utf-8")  # Convierte el contenido a base64
+            "content": content,
         }
 
         # Realiza la solicitud PUT para subir el archivo
