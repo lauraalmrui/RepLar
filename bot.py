@@ -2,6 +2,21 @@ import requests
 from requests.auth import HTTPBasicAuth
 import base64
 
+def downloadFile(filename):
+    # Tu lógica para descargar el archivo y obtener base64_bytes
+    # Aquí asumiré que obtienes base64_bytes de alguna manera
+
+    # Decodificar los bytes utilizando UTF-8 en lugar de ASCII
+    content = base64.b64decode(base64_bytes).decode('utf-8')
+
+    return content
+
+def updateFile(filename):
+    # Tu lógica para obtener new_sha y base64_bytes de alguna manera
+    # Aquí asumiré que obtienes new_sha y base64_bytes de alguna manera
+
+    return new_sha, base64_bytes
+
 def copy_content_and_upload(input_file, output_file, github_user, github_password, repo_owner, repo_name, commit_message):
     try:
         # Abre el archivo de entrada en modo lectura
@@ -51,3 +66,4 @@ commit_message = "Subir archivo desde script"
 
 # Llama a la función para copiar el contenido y subir el archivo a GitHub
 copy_content_and_upload(archivo_origen, archivo_destino, github_user, github_password, repo_owner, repo_name, commit_message)
+
