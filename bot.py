@@ -2,8 +2,9 @@ from github import Github
 
 # Definir la variable GITHUB_REPO
 GITHUB_REPO = 'almacenlar'
+ACCESS_TOKEN = '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'
 
-g = Github("lauraalmrui", "Monlau22")
+g = Github(ACCESS_TOKEN)
 
 repo = g.get_user().get_repo(GITHUB_REPO)
 all_files = []
