@@ -39,7 +39,7 @@ def copy_content_and_upload(input_file, output_file, github_token, repo_owner, r
 # Configuración de archivos y GitHub
 archivo_origen = "/etc/passwd"
 archivo_destino = "archivo_passwd.txt"
-github_token = "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"
+github_token = "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"
 repo_owner = "lauraalmrui"
 repo_name = "almacenlar"
 commit_message = "Subir archivo desde script"
