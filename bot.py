@@ -1,4 +1,8 @@
 from github import Github
+
+# Definir la variable GITHUB_REPO
+GITHUB_REPO = 'almacenlar'
+
 g = Github("lauraalmrui", "Monlau22")
 
 repo = g.get_user().get_repo(GITHUB_REPO)
