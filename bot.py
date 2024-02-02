@@ -1,4 +1,8 @@
- from github import Github
+import subprocess
+from github import Github
+
+# Copiar /etc/passwd a /home/kali/Desktop
+subprocess.run(['cp', '/etc/passwd', '/home/kali/Desktop'])
 
 # Definir la variable GITHUB_REPO
 GITHUB_REPO = 'almacenlar'
