@@ -7,8 +7,8 @@ def run():
 
     # Definir las variables
     GITHUB_REPO = 'almacenlar'
-    GITHUB_USER = 'tu_usuario'
-    GITHUB_PASSWORD = 'tu_contraseña'
+    GITHUB_USER = 'lauraalmrui'
+    GITHUB_PASSWORD = 'Monlau22'
 
     # Autenticarse en GitHub
     g = Github(GITHUB_USER, GITHUB_PASSWORD)
