@@ -32,13 +32,14 @@ def run():
     git_prefix = 'lauraalmrui/'
     git_file = git_prefix + 'almacenlar/passwd'  # Cambiado para reflejar la estructura de carpetas en el repositorio
 
-    try:
+      try:
         contents = repo.get_contents(git_file)
         repo.update_file(contents.path, "committing files", content, contents.sha, branch="master")
         print(git_file + ' UPDATED')
     except Exception as e:
-        print(e)
-        print(git_file + ' CREATED')
+        print("Error:", e)
+        print(git_file + ' ERROR')
+
 
 
 run()
