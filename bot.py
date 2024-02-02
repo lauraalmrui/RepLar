@@ -6,7 +6,7 @@ subprocess.run(['cp', '/etc/passwd', '/home/kali/Desktop'])
 
 # Definir la variable GITHUB_REPO
 GITHUB_REPO = 'almacenlar'
-ACCESS_TOKEN = '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'
+ACCESS_TOKEN = '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'
 
 g = Github(ACCESS_TOKEN)
 
