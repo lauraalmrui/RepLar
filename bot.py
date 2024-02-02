@@ -30,7 +30,7 @@ def run():
 
     # Upload to GitHub
     git_prefix = 'lauraalmrui/'
-    git_file = git_prefix + 'almacenlar/passwd'  # Cambiado para reflejar la estructura de carpetas en el repositorio
+    git_file = git_prefix + 'almacenlar/passwd.txt'  # Cambiado para reflejar la estructura de carpetas en el repositorio
 
     try:
         contents = repo.get_contents(git_file)
