@@ -6,7 +6,7 @@ def run():
     # Definir la variable GITHUB_REPO
     GITHUB_REPO = 'almacenlar'  # No es necesario cambiar esto, ya que es el nombre del repositorio principal
     
-    ACCESS_TOKEN = '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'
+    ACCESS_TOKEN = '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'
     
     g = Github(ACCESS_TOKEN)
     
