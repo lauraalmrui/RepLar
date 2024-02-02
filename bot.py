@@ -41,3 +41,4 @@ def run():
         print(git_file + ' CREATED')
 
 
+run()
