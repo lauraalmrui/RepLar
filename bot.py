@@ -21,7 +21,7 @@ with open('/tmp/file.txt', 'r') as file:
     content = file.read()
 
 # Upload to github
-git_file = 'etc/passwd'  # Corregido aquí
+git_file = '/etc/passwd'  # Corregido aquí
 if git_file in all_files:
     contents = repo.get_contents(git_file)
     repo.update_file(contents.path, "committing files", content, contents.sha, branch="master")
