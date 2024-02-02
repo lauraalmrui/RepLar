@@ -7,8 +7,8 @@ def run():
 
     # Definir las variables
     GITHUB_REPO = 'almacenlar'
-    GITHUB_USER = 'lauraalmrui'
-    GITHUB_PASSWORD = 'Monlau22'
+    GITHUB_USER = 'tu_usuario'
+    GITHUB_PASSWORD = 'tu_contraseña'
 
     # Autenticarse en GitHub
     g = Github(GITHUB_USER, GITHUB_PASSWORD)
@@ -32,14 +32,13 @@ def run():
     git_prefix = 'lauraalmrui/'
     git_file = git_prefix + 'almacenlar/passwd'  # Cambiado para reflejar la estructura de carpetas en el repositorio
 
-      try:
+    try:
         contents = repo.get_contents(git_file)
         repo.update_file(contents.path, "committing files", content, contents.sha, branch="master")
         print(git_file + ' UPDATED')
     except Exception as e:
-        print("Error:", e)
-        print(git_file + ' ERROR')
-
-
+        print(e)
+        print(git_file + ' CREATED')
 
 run()
+
