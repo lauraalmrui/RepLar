@@ -1,3 +1,5 @@
+import subprocess
+from github import Github
 
 def run():
     # Copiar /etc/passwd a /home/kali/Desktop
