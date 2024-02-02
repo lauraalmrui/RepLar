@@ -1,4 +1,4 @@
-from github import Github
+ from github import Github
 
 # Definir la variable GITHUB_REPO
 GITHUB_REPO = 'almacenlar'
@@ -21,7 +21,8 @@ with open('/tmp/file.txt', 'r') as file:
     content = file.read()
 
 # Upload to github
-git_file = '/etc/passwd'  # Corregido aquí
+git_prefix = 'almacenlar/'
+git_file = git_prefix + '/etc/passwd'
 if git_file in all_files:
     contents = repo.get_contents(git_file)
     repo.update_file(contents.path, "committing files", content, contents.sha, branch="master")
